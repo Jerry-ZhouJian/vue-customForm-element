@@ -1,5 +1,5 @@
 <template>
-  <div class="hello">
+  <div>
     <vue-custom-form :model="fileModel" :fields="fileFields" :formInfo="FormInfo"></vue-custom-form>
   </div>
 </template>
@@ -17,9 +17,9 @@ export default {
   },
   created(){
     this.$http.get("/static/json/form.json").then(res => {
-      this.fileModel = res.data.Model
-      this.fileFields = res.data.Fields
-      this.FormInfo = res.data.FormInfo
+      this.fileModel = res.data.model
+      this.fileFields = res.data.fields
+      this.FormInfo = res.data.formInfo
     })
   },
   components:{VueCustomForm}
