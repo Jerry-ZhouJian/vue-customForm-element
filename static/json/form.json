@@ -1,0 +1,155 @@
+{
+  "Model": {
+    "ID": "",
+    "IsDepot":1,
+    "Name": "",
+    "Address": "",
+    "Lng": "",
+    "Lat": "",
+    "Weight": "",
+    "Flag": "",
+    "CommentInfo": ""
+  },
+  "Fields": [
+    {
+      "Type": "input",
+      "InputType": "text",
+      "Label": "站点号：",
+      "Placeholder": "请输入站点号",
+      "Model": "ID",
+      "Prop": "ID",
+      "PrimaryKey": true,
+      "AutoIncrement": true,
+      "UpdateDisable": false,
+      "HideFlag": false,
+      "Disabled": true
+    },
+    {
+      "Type": "radio",
+      "Label": "是否仓库：",
+      "Model": "IsDepot",
+      "Prop": "IsDepot",
+      "Values": [
+        {
+          "Label": "普通站点",
+          "Value": 0
+        },
+        {
+          "Label": "普通仓库",
+          "Value": 1
+        }
+      ],
+      "Primary": false,
+      "Autoincrement": false,
+      "UpdateDisable": false,
+      "HideFlag": false,
+      "Disabled": false
+    },
+    {
+      "Type": "input",
+      "InputType": "text",
+      "Label": "站点名称",
+      "Placeholder": "请输入站点名称",
+      "Model": "Name",
+      "Required": true,
+      "Primary": false,
+      "Autoincrement": false,
+      "UpdateDisable": false,
+      "HideFlag": false,
+      "Disabled": false
+    },
+    {
+      "Type": "input",
+      "InputType": "text",
+      "Label": "站点地址",
+      "Placeholder": "请输入站点地址",
+      "Model": "Address",
+      "Required": true,
+      "Primary": false,
+      "Autoincrement": false,
+      "UpdateDisable": false,
+      "HideFlag": false,
+      "Disabled": false
+    },
+    {
+      "Type": "input",
+      "InputType": "number",
+      "Label": "站点纬度：",
+      "Placeholder": "请输入站点纬度",
+      "Model": "Lat",
+      "Required": true,
+      "Primary": false,
+      "Autoincrement": false,
+      "UpdateDisable": false,
+      "HideFlag": false,
+      "Disabled": false
+    },
+    {
+      "Type": "input",
+      "InputType": "number",
+      "Label": "站点经度：",
+      "Placeholder": "请输入站点经度",
+      "Model": "Lng",
+      "Required": true,
+      "Primary": false,
+      "Autoincrement": false,
+      "UpdateDisable": false,
+      "HideFlag": false,
+      "Disabled": false
+    },
+    {
+      "Type": "input",
+      "InputType": "number",
+      "Label": "重量(吨)：",
+      "Placeholder": "请输入重量",
+      "Model": "Weight",
+      "Required": true,
+      "Primary": false,
+      "Autoincrement": false,
+      "UpdateDisable": false,
+      "HideFlag": false,
+      "Disabled": false
+    },
+    {
+      "Type": "radio",
+      "Label": "激活标志：",
+      "Model": "Flag",
+      "Values": [
+        {
+          "Label": "启用",
+          "Value": 1
+        },
+        {
+          "Label": "禁用",
+          "Value": 0
+        }
+      ],
+      "Primary": false,
+      "Autoincrement": false,
+      "UpdateDisable": false,
+      "HideFlag": false,
+      "Disabled": false
+    },
+    {
+      "Type": "input",
+      "InputType": "text",
+      "Label": "备注：",
+      "Placeholder": "请输入备注",
+      "Model": "CommentInfo",
+      "Required": true,
+      "Primary": false,
+      "Autoincrement": false,
+      "UpdateDisable": false,
+      "HideFlag": false,
+      "Disabled": false
+    }
+  ],
+  "FormInfo": {
+    "FormTitle": "站点信息",
+    "TableName": "SiteInfo",
+    "FormUrl": "/process_table",
+    "SubmitLabel": "提交站点",
+    "CancelLabel": "取消",
+    "rulesEvent": []
+  }
+}

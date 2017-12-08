@@ -1,0 +1,272 @@
+{
+  "indexMenu": [{
+      "value": {
+        "type": "tab"
+      },
+      "label": "教师管理模块",
+      "children": [{
+          "label": "教师信息管理",
+          "disabled": false,
+          "permission": 2,
+          "value": {
+            "type": "table",
+            "value": "教师信息管理",
+            "json": "index/json/tabs/TeacherInfo/TeacherInfo.json",
+            "url_get": "/get_table_data",
+            "tableName": "TeacherInfo",
+            "actions": {
+              "insert": true,
+              "query": true,
+              "update": false,
+              "delete": true,
+              "exportData": false,
+              "url_process": "/process_table"
+            }
+          }
+        },
+        {
+          "label": "重置密码",
+          "disabled": false,
+          "permission": 4,
+          "value": {
+            "type": "table",
+            "value": "重置密码",
+            "json": "index/json/tabs/TeacherPassword/TeacherPassword.json",
+            "url_get": "/get_table_data",
+            "tableName": "TeacherInfo",
+            "actions": {
+              "insert": false,
+              "query": false,
+              "update": true,
+              "delete": false,
+              "exportData": false,
+              "url_process": "/process_table"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "value": {
+        "type": "tab"
+      },
+      "label": "实验数据模块",
+      "children": [{
+          "label": "站点信息管理",
+          "disabled": false,
+          "permission": 8,
+          "value": {
+            "type": "table",
+            "value": "站点信息管理",
+            "json": "index/json/tabs/SiteInfo/SiteInfo.json",
+            "url_get": "/get_table_data",
+            "tableName": "SiteInfo",
+            "actions": {
+              "insert": false,
+              "query": true,
+              "update": true,
+              "delete": false,
+              "exportData": false,
+              "url_process": "/process_table"
+            }
+          }
+        },
+        {
+          "label": "路径信息管理",
+          "disabled": false,
+          "permission": 16,
+          "value": {
+            "type": "component",
+            "value": "路径信息管理"
+          }
+        }
+      ]
+    },
+    {
+      "value": {
+        "type": "tab"
+      },
+      "label": "实验信息模块",
+      "children": [{
+        "label": "实验信息管理",
+        "disabled": false,
+        "permission": 32,
+        "value": {
+          "type": "table",
+          "value": "实验信息管理",
+          "json": "index/json/tabs/ExperimentInfo/ExperimentInfo.json",
+          "url_get": "/get_table_data",
+          "tableName": "ExperimentInfo",
+          "actions": {
+            "insert": false,
+            "query": false,
+            "update": true,
+            "delete": false,
+            "exportData": false,
+            "url_process": "/process_table"
+          }
+        }
+      }]
+    },
+    {
+      "value": {
+        "type": "tab"
+      },
+      "label": "学生实验模块",
+      "children": [{
+          "label": "导入学生实验",
+          "disabled": false,
+          "permission": 64,
+          "value": {
+            "type": "component",
+            "value": "导入学生实验"
+          }
+        },
+        {
+          "label": "学生实验评分",
+          "disabled": false,
+          "permission": 128,
+          "value": {
+            "type": "component",
+            "value": "学生实验评分"
+          }
+        },
+        {
+          "label": "删除班级",
+          "disabled": false,
+          "permission": 256,
+          "value": {
+            "type": "component",
+            "value": "删除班级"
+          }
+        }
+      ]
+    },
+    {
+      "value": {
+        "type": "tab"
+      },
+      "label": "系统参数模块",
+      "children": [{
+        "label": "系统参数管理",
+        "disabled": false,
+        "permission": 512,
+        "value": {
+          "type": "table",
+          "value": "系统参数管理",
+          "json": "index/json/tabs/SystemParameters/SystemParameters.json",
+          "url_get": "/get_table_data",
+          "tableName": "SystemParameters",
+          "actions": {
+            "add": true,
+            "query": true,
+            "edito": true,
+            "delect": true,
+            "exportData": false,
+            "url_process": "/process_table"
+          }
+        }
+      }]
+    },
+    {
+      "value": {
+        "type": "tab"
+      },
+      "label": "实验模块",
+      "children": [{
+          "label": "我的实验",
+          "disabled": false,
+          "permission": 1024,
+          "value": {
+            "type": "component",
+            "value": "我的实验"
+          }
+        },
+        {
+          "label": "我的成绩",
+          "disabled": false,
+          "permission": 2048,
+          "value": {
+            "type": "component",
+            "value": "我的成绩"
+          }
+        }
+      ]
+    },
+    {
+      "value": {
+        "type": "tab"
+      },
+      "label": "地图管理模块",
+      "children": [{
+        "label": "地图工具",
+        "disabled": false,
+        "permission": 4096,
+        "value": {
+          "type": "component",
+          "value": "地图工具"
+        }
+      }]
+    },
+    {
+      "label": "系统操作手册",
+      "value": {
+        "type": "tab"
+      },
+      "children": [{
+          "label": "操作手册(教师版)",
+          "disabled": false,
+          "permission": 8192,
+          "value": {
+            "type": "pdf",
+            "value": "操作手册(教师版)",
+            "pdf": "/index/pdf/LORTS_manual_teacher.pdf"
+          }
+        },
+        {
+          "label": "操作手册(学生版)",
+          "disabled": false,
+          "permission": 16384,
+          "value": {
+            "type": "pdf",
+            "value": "操作手册(学生版)",
+            "pdf": "/index/pdf/LORTS_manual_student.pdf"
+          }
+        }
+      ]
+    },
+    {
+      "label": "修改密码",
+      "value": {
+        "type": "dialog"
+      },
+      "children": [{
+        "label": "修改密码",
+        "disabled": false,
+        "permission": 32768,
+        "value": {
+          "type": "dialog",
+          "url": "/change_password"
+        }
+      }]
+    },
+    {
+      "label": "退出系统",
+      "value": {
+        "type": "dialog"
+      },
+      "children": [{
+        "label": "退出系统",
+        "disabled": false,
+        "permission": 1,
+        "value": {
+          "type": "logout",
+          "url": "/logout"
+        }
+
+      }]
+
+    }
+
+  ]
+}
