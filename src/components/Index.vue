@@ -16,7 +16,7 @@ export default {
     }
   },
   created(){
-    this.$http.get("/static/json/form.json").then(res => {
+    this.$http.get("/static/json/ExperimentInfo.json").then(res => {
       this.fileModel = res.data.model
       this.fileFields = res.data.fields
       this.FormInfo = res.data.formInfo

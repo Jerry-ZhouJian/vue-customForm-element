@@ -4,7 +4,6 @@
       <el-form-item v-for="item in ArrformFields" :key="item.type"
         :prop="item.prop"
         :label='item.label'
-        :rules="item.rules"
       >  
       <!-- input开始 -->  
         <el-input :type="item.inputType" v-model="ObjformModel[item.model]" :rows="item.rows" :disabled="item.disabled" :readonly="item.readonly" v-if="item.type =='input'"></el-input>
@@ -58,17 +57,32 @@
 
 <script>
 import QS from "qs";
+// 导入验证的JS
+import formValidator from "static/FormValidator.js"
 export default {
   props: ["model", "fields", "formInfo"],
   data() {
     var validateLat = (rule, value, callback) => {
+      console.log(11)
       
-        if (value.split(".")[1].length === undefined || value.split(".")[1].length != 5) {
+        if (value.toString().split(".")[1] !== undefined) {
           callback(new Error('纬度格式不符合规范'));
         }else {
           callback();
         }
         };
+       var validateNormalRate = (rule, value, callback) => {
+         console.log(22)
+            //  判断是否为空
+            if (value === '') {
+                callback(new Error('内容不能为空'));
+                //  判断是否等于某个值`
+            } else if (Number(value) + Number(this.ObjformModel.ExperimentRate) != 100) {
+                callback(new Error('成绩比例的和必须为100'));
+            } else {
+                callback();
+            }
+        }
     return {
       Licence: [],
       NumSum: 0,
@@ -84,11 +98,41 @@ export default {
       },
       // 自定义验证规则
       formCustomRules:{
-        
+        NormalRate:[
+          {validator: validateLat, trigger: 'blur' },
+          {validator: validateNormalRate, trigger: 'blur' }
+        ]
       }
     };
   },
+  created() {
+    // 重置状态
+    this.ObjformModel = {}
+    this.ArrformFields = []
+    this.ObjFormInfo = {}
+    this.ArrFormEvent = []
+    // 接受新的值
+    this.ObjformModel = this.model
+    this.ArrformFields = this.fields;
+    this.ObjFormInfo = this.formInfo
+    this.ArrFormEvent = this.formInfo.formRules;
+  
+  },
   methods: {
+    generateFormCustomRules(){
+      var _this = this
+      for (var i = 0; i < this.ArrFormEvent.length; i++) {
+        if(this.formCustomRules[this.ArrFormEvent[i].field2] === undefined){
+          this.formCustomRules[this.ArrFormEvent[i].field2] = []
+        }
+        this.formCustomRules[this.ArrFormEvent[i].field2].push(
+          {
+              validator:formValidator[this.ArrFormEvent[i].function](_this,this.ArrFormEvent[i].field1,this.ArrFormEvent[i].msg),
+              trigger:'blur'
+            }
+        )    
+      }
+    },
     // 生成参数
     generateParameters() {
       this.FormActionParams.sys_table_name = this.ObjFormInfo.tableName,
@@ -218,7 +262,6 @@ export default {
         });
         return;
       }
-      console.log(num1, num2);
       if (Number(num1) + Number(num2) != 100) {
         this.IsSubmit = false;
         this.$message({
@@ -233,28 +276,13 @@ export default {
     },
     // 选择权限发生变化
     permissionChange() {
-      console.log(22)
+     
       this.NumSum = 0;
       this.Licence.forEach(item => {
         this.NumSum = this.NumSum ^ item;
       });
       this.ObjformModel.Permission = this.NumSum.toString(16);
     }
-  },
-  created() {
-    // 重置状态
-    this.ObjformModel = {}
-    this.ArrformFields = []
-    this.ObjFormInfo = {}
-    this.ArrFormEvent = []
-
-    // 接受新的值
-    Object.assign(this.ObjformModel,this.model)
-    // this.ObjformModel = this.model;
-    this.ArrformFields = this.fields.concat();
-    Object.assign(this.ObjFormInfo,this.formInfo)
-    // this.ObjFormInfo = this.formInfo;
-    this.ArrFormEvent = this.formInfo.formRules.concat();
   },
   mounted(){
     this.resetForm();
@@ -269,6 +297,7 @@ export default {
     formInfo(val) {
       this.ObjFormInfo = val;
       this.ArrFormEvent = val.formRules;
+      // this.generateFormCustomRules()
     }
   }
 };

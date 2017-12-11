@@ -21,7 +21,13 @@
     },
     "submitButtonaName": "提交",
     "cancelButtonName": "重置",
-    "formRules": []
+    "formRules": [
+      {
+        "field1":"ExperimentRate",
+        "field2":"NormarRate",
+        "function":"sumHundred"
+      }
+    ]
   },
   "model": {
     "IsDepot": 0,
@@ -35,7 +41,11 @@
       "placeholder": "请输入站点序号",
       "model": "ID",
       "prop": "ID",
-      "rules": [],
+      "rules": [
+        { required: true, message: '请输入活动名称'},
+        { min: 3, message: '长度应大于3个字符'}
+        { max: 5, message: '长度应小于5个字符'}
+      ],
       "primaryKey": true,
       "autoIncrement": true,
       "updateDisable": false,
