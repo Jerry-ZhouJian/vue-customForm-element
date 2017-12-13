@@ -8,14 +8,14 @@
 import VueCustomForm from "@/components/VueCustomForm";
 export default {
   name: 'HelloWorld',
-  data () {
+  data() {
     return {
       fileModel:{},
       fileFields:[],
       FormInfo:{}
     }
   },
-  created(){
+  created() {
     this.$http.get("/static/json/ExperimentInfo.json").then(res => {
       this.fileModel = res.data.model
       this.fileFields = res.data.fields
